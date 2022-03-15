@@ -10,5 +10,5 @@ game.py
 
 todo:
 - fix frame issues (run to see what i mean) *done
-- piece movement
+- piece movement *need to fix weird piece movement
 - bot player that makes random moves
