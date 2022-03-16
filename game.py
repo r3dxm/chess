@@ -22,11 +22,29 @@ def main():
     clock = pg.time.Clock()
     load_images()
     running = True
+    sq_selected = ()
+    player_clicks = []
 
     while running == True:
         for e in pg.event.get():
             if e.type == pg.QUIT:
                 running = False
+            elif e.type == pg.MOUSEBUTTONDOWN:
+                mouse = pg.mouse.get_pos()
+                col = int(mouse[0] / SQ_SIZE)
+                row = int(mouse[1] / SQ_SIZE)
+                if sq_selected == (row, col):
+                    sq_selected = ()
+                    player_clicks = []
+                else:
+                    sq_selected = (row, col)
+                    player_clicks.append(sq_selected)
+                if len(player_clicks) == 2:
+                    move = engine.move(player_clicks[0], player_clicks[1], engine.fen_to_array(state.fen))
+                    print(move.notation())
+                    state.make_move(move)
+                    sq_selected = ()
+                    player_clicks = []
 
         piece_array = engine.fen_to_array(state.fen)
         draw_game_state(screen, piece_array)
@@ -50,10 +68,11 @@ def draw_board(screen):
 
             pg.draw.rect(screen, color, pg.Rect(x * SQ_SIZE, y * SQ_SIZE, SQ_SIZE, SQ_SIZE))
 
+
 def draw_pieces(screen, piece_array):
     for i in range(DIMENSION):
         for j in range(DIMENSION):
-            piece = piece_array[j][i]
+            piece = piece_array[i][j]
             if piece != '':
                 screen.blit(IMAGES[piece], pg.Rect(i * SQ_SIZE, j * SQ_SIZE, SQ_SIZE, SQ_SIZE))
 
