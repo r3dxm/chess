@@ -65,56 +65,58 @@ def fen_to_array(fen):
         for c in fen_list:
             if c == 'K':
                 array[x][y] = 'wK'
-                y += 1
+                x += 1
             if c == 'Q':
                 array[x][y] = 'wQ'
-                y += 1
+                x += 1
             if c == 'B':
                 array[x][y] = 'wB'
-                y += 1
+                x += 1
             if c == 'N':
                 array[x][y] = 'wN'
-                y += 1
+                x += 1
             if c == 'R':
                 array[x][y] = 'wR'
-                y += 1
+                x += 1
             if c == 'P':
                 array[x][y] = 'wp'
-                y += 1
+                x += 1
             if c == 'k':
                 array[x][y] = 'bK'
-                y += 1
+                x += 1
             if c == 'q':
                 array[x][y] = 'bQ'
-                y += 1
+                x += 1
             if c == 'b':
                 array[x][y] = 'bB'
-                y += 1
+                x += 1
             if c == 'n':
                 array[x][y] = 'bN'
-                y += 1
+                x += 1
             if c == 'r':
                 array[x][y] = 'bR'
-                y += 1
+                x += 1
             if c == 'p':
                 array[x][y] = 'bp'
-                y += 1
+                x += 1
             if c == '/':
-                y = 0
+                x = 0
+                y += 1
+            if c == '1':
                 x += 1
             if c == '2':
-                y += 2
+                x += 2
             if c == '3':
-                y += 3
+                x += 3
             if c == '4':
-                y += 4
+                x += 4
             if c == '5':
-                y += 5
+                x += 5
             if c == '6':
-                y += 6
+                x += 6
             if c == '7':
-                y += 7
+                x += 7
             if c == '8':
-                y += 8
+                x += 8
 
         return array
