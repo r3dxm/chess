@@ -11,4 +11,6 @@ game.py
 todo:
 - fix frame issues (run to see what i mean) *done
 - piece movement *done
+- fix pawn promotion
+- fix piece selection
 - bot player that makes random moves
